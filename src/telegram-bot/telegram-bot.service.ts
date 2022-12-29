@@ -15,7 +15,7 @@ interface SessionData {
 type MyContext = Context & SessionFlavor<SessionData>;
 
 const createAndInitBot = async () => {
-  const bot = new Bot<MyContext>(process.env.TELEGRAM_BOT_API_TOKEN);
+  const bot = new Bot<MyContext>(process.env.TELEGRAM_BOT_API_TOKEN_PROD);
 
   const content = await getShortStayVisaWithSponsorShipContent();
 
