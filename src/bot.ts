@@ -1,26 +1,43 @@
-import { Bot, Context, SessionFlavor } from 'grammy';
+import { Bot } from 'grammy';
 import { Menu } from '@grammyjs/menu';
 import * as dotEnv from 'dotenv';
-import { getShortStayVisaWithSponsorShipContent } from './content';
+import ContentService from './content';
+
+
+const contentService = new ContentService();
 
 dotEnv.config();
 
-// const soonestVFSAppointment = await getSoonestVFSAppointment();
+let bot: Bot;
+let botRunning = false;
+const telegramBotApiToken = process.env.TELEGRAM_BOT_API_TOKEN;
 
-/** This is how the dishes look that this bot is managing */
-interface SessionData {
-  selectedService: string;
-  selectedDesk: string;
+const createBotInstance = (apiToken) => {
+  const bot = new Bot(apiToken);
+  return bot;
+};
+
+if (!bot) {
+  bot = createBotInstance(telegramBotApiToken);
 }
-type MyContext = Context & SessionFlavor<SessionData>;
 
-const createAndInitBot = async () => {
-  const bot = new Bot<MyContext>(process.env.TELEGRAM_BOT_API_TOKEN_PROD);
+process.once('SIGINT', () => {
+  bot.stop();
+  botRunning = false;
+});
+process.once('SIGTERM', () => {
+  bot.stop();
+  botRunning = false;
+});
 
-  const content = await getShortStayVisaWithSponsorShipContent();
+const initBot = async (bot: Bot) => {
+  if (botRunning) return; // If bot is already running, don't initialize again
+
+  botRunning = true; // Set botRunning flag to true
+  const content = await contentService.getShortStayVisaWithSponsorShipContent();
 
   const mainMenu = {
-    menu: new Menu<MyContext>('main-menu'),
+    menu: new Menu('main-menu'),
     mainText:
       'سلام!‌این ربات بهتون کمک میکنه اطلاعات لازم برای ویزای کوتاه مدت مثل دعوت از دوستان یا خانواده رو به دست بیارید!',
     steps: [
@@ -40,7 +57,7 @@ const createAndInitBot = async () => {
   }
 
   const familyShortStayVisaMenu = {
-    menu: new Menu<MyContext>('family-short-stay-visa-menu'),
+    menu: new Menu('family-short-stay-visa-menu'),
     mainText:
       'اطلاعات مورد نظر برای دعوت از دوستان یا خانواده به هلند از ایران رو میتونید اینجا مشاهده کنید.',
     steps: [
@@ -98,4 +115,4 @@ const createAndInitBot = async () => {
   bot.start();
 };
 
-export { createAndInitBot };
+initBot(bot);

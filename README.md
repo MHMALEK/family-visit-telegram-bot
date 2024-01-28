@@ -1,73 +1,113 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# node-typescript-boilerplate
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+[![Sponsor][sponsor-badge]][sponsor]
+[![TypeScript version][ts-badge]][typescript-4-9]
+[![Node.js version][nodejs-badge]][nodejs]
+[![APLv2][license-badge]][license]
+[![Build Status - GitHub Actions][gha-badge]][gha-ci]
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+👩🏻‍💻 Developer Ready: A comprehensive template. Works out of the box for most [Node.js][nodejs] projects.
 
-## Description
+🏃🏽 Instant Value: All basic tools included and configured:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [TypeScript][typescript] [4.9][typescript-4-9]
+- [ESM][esm]
+- [ESLint][eslint] with some initial rules recommendation
+- [Jest][jest] for fast unit testing and code coverage
+- Type definitions for Node.js and Jest
+- [Prettier][prettier] to enforce consistent code style
+- NPM [scripts](#available-scripts) for common operations
+- [EditorConfig][editorconfig] for consistent coding style
+- Reproducible environments thanks to [Volta][volta]
+- Example configuration for [GitHub Actions][gh-actions]
+- Simple example of TypeScript code and unit test
 
-## Installation
+🤲 Free as in speech: available under the APLv2 license.
 
-```bash
-$ npm install
+## Getting Started
+
+This project is intended to be used with the latest Active LTS release of [Node.js][nodejs].
+
+### Use as a repository template
+
+To start, just click the **[Use template][repo-template-action]** link (or the green button). Start adding your code in the `src` and unit tests in the `__tests__` directories.
+
+### Clone repository
+
+To clone the repository, use the following commands:
+
+```sh
+git clone https://github.com/jsynowiec/node-typescript-boilerplate
+cd node-typescript-boilerplate
+npm install
 ```
 
-## Running the app
+### Download latest release
 
-```bash
-# development
-$ npm run start
+Download and unzip the current **main** branch or one of the tags:
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```sh
+wget https://github.com/jsynowiec/node-typescript-boilerplate/archive/main.zip -O node-typescript-boilerplate.zip
+unzip node-typescript-boilerplate.zip && rm node-typescript-boilerplate.zip
 ```
 
-## Test
+## Available Scripts
 
-```bash
-# unit tests
-$ npm run test
+- `clean` - remove coverage data, Jest cache and transpiled files,
+- `prebuild` - lint source files and tests before building,
+- `build` - transpile TypeScript to ES6,
+- `build:watch` - interactive watch mode to automatically transpile source files,
+- `lint` - lint source files and tests,
+- `prettier` - reformat files,
+- `test` - run tests,
+- `test:watch` - interactive watch mode to automatically re-run tests
 
-# e2e tests
-$ npm run test:e2e
+## Additional Information
 
-# test coverage
-$ npm run test:cov
-```
+### Why include Volta
 
-## Support
+[Volta][volta]’s toolchain always keeps track of where you are, it makes sure the tools you use always respect the settings of the project you’re working on. This means you don’t have to worry about changing the state of your installed software when switching between projects. For example, it's [used by engineers at LinkedIn][volta-tomdale] to standardize tools and have reproducible development environments.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+I recommend to [install][volta-getting-started] Volta and use it to manage your project's toolchain.
 
-## Stay in touch
+### ES Modules
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+This template uses native [ESM][esm]. Make sure to read [this][nodejs-esm], and [this][ts47-esm] first.
+
+If your project requires CommonJS, you will have to [convert to ESM][sindresorhus-esm].
+
+Please do not open issues for questions regarding CommonJS or ESM on this repo.
+
+## Backers & Sponsors
+
+Support this project by becoming a [sponsor][sponsor].
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+Licensed under the APLv2. See the [LICENSE](https://github.com/jsynowiec/node-typescript-boilerplate/blob/main/LICENSE) file for details.
+
+[ts-badge]: https://img.shields.io/badge/TypeScript-4.9-blue.svg
+[nodejs-badge]: https://img.shields.io/badge/Node.js->=%2018.12-blue.svg
+[nodejs]: https://nodejs.org/dist/latest-v18.x/docs/api/
+[gha-badge]: https://github.com/jsynowiec/node-typescript-boilerplate/actions/workflows/nodejs.yml/badge.svg
+[gha-ci]: https://github.com/jsynowiec/node-typescript-boilerplate/actions/workflows/nodejs.yml
+[typescript]: https://www.typescriptlang.org/
+[typescript-4-9]: https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/
+[license-badge]: https://img.shields.io/badge/license-APLv2-blue.svg
+[license]: https://github.com/jsynowiec/node-typescript-boilerplate/blob/main/LICENSE
+[sponsor-badge]: https://img.shields.io/badge/♥-Sponsor-fc0fb5.svg
+[sponsor]: https://github.com/sponsors/jsynowiec
+[jest]: https://facebook.github.io/jest/
+[eslint]: https://github.com/eslint/eslint
+[wiki-js-tests]: https://github.com/jsynowiec/node-typescript-boilerplate/wiki/Unit-tests-in-plain-JavaScript
+[prettier]: https://prettier.io
+[volta]: https://volta.sh
+[volta-getting-started]: https://docs.volta.sh/guide/getting-started
+[volta-tomdale]: https://twitter.com/tomdale/status/1162017336699838467?s=20
+[gh-actions]: https://github.com/features/actions
+[repo-template-action]: https://github.com/jsynowiec/node-typescript-boilerplate/generate
+[esm]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+[sindresorhus-esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+[nodejs-esm]: https://nodejs.org/docs/latest-v16.x/api/esm.html
+[ts47-esm]: https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/#esm-nodejs
+[editorconfig]: https://editorconfig.org
