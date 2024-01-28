@@ -7,8 +7,8 @@ class ContentService {
   client: any;
   constructor() {
     this.client = contentful.createClient({
-      space: process.env.FAMILY_VISIT_CONTENT_API_SPACE_ID,
-      accessToken: process.env.FAMILY_VISIT_CONTENT_API_TOKEN,
+      space: process.env.FAMILY_VISIT_CONTENT_API_SPACE_ID as string,
+      accessToken: process.env.FAMILY_VISIT_CONTENT_API_TOKEN as string,
     });
   }
 
